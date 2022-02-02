@@ -296,7 +296,7 @@ int encode(char *my_text){
     
     
     
-    //printf("Total nodes = %i\n", total_nodes);
+    
     
     // taking space for the code
     int estimated_code_len = how_long_text*5/8+1;
