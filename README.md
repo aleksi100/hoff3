@@ -1,3 +1,3 @@
 # hoff3
 
-My implementation of hoffman coding
+My implementation of huffman coding in c
