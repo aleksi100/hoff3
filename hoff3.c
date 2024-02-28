@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "./argparser.h"
 
 
 #define FILENAME "data.hoff3"
@@ -181,7 +182,7 @@ int make_code(char *str, NODE *node, __uint8_t *final_code){
     return len;
 }
 void store
-(__uint8_t letters_len, __uint16_t code_len, NODE *node, u_int8_t *code){
+(__uint8_t letters_len, __uint16_t code_len, NODE *node, __uint8_t *code){
     FILE *file = fopen(FILENAME, "wb");
     if(file == NULL) return;
 
@@ -393,10 +394,15 @@ int decode(){
 // tarkista koodi muisti
 
 int main(int argc, char *argv[]){
-    if(argc == 1) return 1;
+    struct OPTIONS_STRUCT *OPTIONS = parse(argc, argv);
+    printf("operation = %x\n", OPTIONS->operation);
+    printf("inFile = %s\n", OPTIONS->inFile);
+    printf("outFile = %s\n", OPTIONS->outFile);
+
+    // if(argc == 1) return 1;
 
 
-    if(strcmp(argv[1], "encode") == 0) encode(argv[2]);
-    if(strcmp(argv[1], "decode") == 0) decode();
+    // if(strcmp(argv[1], "encode") == 0) encode(argv[2]);
+    // if(strcmp(argv[1], "decode") == 0) decode();
     
 }
